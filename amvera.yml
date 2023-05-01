@@ -1,0 +1,9 @@
+meta:
+  environment: jvm
+  toolchain:
+    name: maven
+    version: 8
+
+run:
+  jarName: application.jar
+  containerPort: 8080
