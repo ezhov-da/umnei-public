@@ -1,0 +1,15 @@
+.animated.delay-6s{
+    -webkit-animation-delay:6s;
+    animation-delay:6s
+}
+
+.active{
+    background-color: #CEEEFF;
+}
+.logo-title{
+    margin-left: 10px;
+}
+
+input[type=radio]{
+    margin-right: 5px;
+}

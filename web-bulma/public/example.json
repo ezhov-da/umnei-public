@@ -1,0 +1,19 @@
+{
+  "tasks": [
+    {
+      "first": "2",
+      "second": "?",
+      "third": "4",
+      "operator": "+",
+      "answer": "2"
+    },
+    {
+      "first": "?",
+      "second": "5",
+      "third": "7",
+      "operator": "+",
+      "answer": "2"
+    }
+  ]
+}
+
