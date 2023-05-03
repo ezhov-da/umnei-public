@@ -55,6 +55,8 @@ class CsvPlainExampleGroupRepository implements PlainExampleGroupRepository {
 
             if (counter % 30000 == 0) {
                 LOG.info("method=init \"обработано записей\"={}", counter);
+            } else if (counter == 2000000) {
+                return;
             }
         }
         LOG.info(
