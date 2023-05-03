@@ -12,13 +12,13 @@
     </parent>
 
     <groupId>ru.ezhov.mathematics</groupId>
-    <artifactId>parent</artifactId>
+    <artifactId>mathematics</artifactId>
     <packaging>pom</packaging>
-    <version>${revision}</version>
+    <version>1.0</version>
+
     <modules>
         <module>image-generator</module>
         <module>mathematics-engine</module>
-        <module>web-bulma</module>
         <module>application</module>
     </modules>
 
@@ -34,12 +34,6 @@
             <dependency>
                 <groupId>ru.ezhov.mathematics</groupId>
                 <artifactId>mathematics-engine</artifactId>
-                <version>${revision}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>ru.ezhov.mathematics</groupId>
-                <artifactId>web-bulma</artifactId>
                 <version>${revision}</version>
             </dependency>
         </dependencies>

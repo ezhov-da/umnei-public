@@ -4,6 +4,10 @@ meta:
     name: maven
     version: 8
 
+build:
+  artifacts:
+    "application/target/*.jar": /
+
 run:
   jarName: application.jar
   containerPort: 8080
