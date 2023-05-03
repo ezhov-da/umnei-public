@@ -65,7 +65,7 @@ class CsvPlainExampleGroupRepository implements PlainExampleGroupRepository {
             resultMap.put(resultValue.value(), resultPlainExamples);
 
         }
-        LOG.debug("method=init action=\"завершено наполнение хранилища\" \"уникальных значений\"={}", resultMap.size());
+        LOG.info("method=init action=\"завершено наполнение хранилища\" \"уникальных значений\"={}", resultMap.size());
     }
 
     @Override
