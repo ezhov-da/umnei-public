@@ -1,5 +1,6 @@
 package ru.ezhov.umnei.mathematics.infrastructure;
 
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Service;
 import ru.ezhov.mathematics.engine.example.domain.model.FirstValue;
 import ru.ezhov.mathematics.engine.example.domain.model.FirstValueGroup;
@@ -16,7 +17,7 @@ import java.io.InputStream;
 import java.util.Optional;
 
 @Service
-public class PlainExampleGroupRepositoryImpl implements PlainExampleGroupRepository {
+public class PlainExampleGroupRepositoryImpl implements PlainExampleGroupRepository, InitializingBean {
     private PlainExampleGroupRepository plainExampleGroupRepository = null;
 
     private void init() throws ResultGroupRepositoryException {
@@ -29,25 +30,21 @@ public class PlainExampleGroupRepositoryImpl implements PlainExampleGroupReposit
 
     @Override
     public Optional<FirstValueGroup> by(FirstValue value) throws ResultGroupRepositoryException {
-        if (plainExampleGroupRepository == null) {
-            init();
-        }
         return plainExampleGroupRepository.by(value);
     }
 
     @Override
     public Optional<SecondValueGroup> by(SecondValue value) throws ResultGroupRepositoryException {
-        if (plainExampleGroupRepository == null) {
-            init();
-        }
         return plainExampleGroupRepository.by(value);
     }
 
     @Override
     public Optional<ResultGroup> by(ResultValue result) throws ResultGroupRepositoryException {
-        if (plainExampleGroupRepository == null) {
-            init();
-        }
         return plainExampleGroupRepository.by(result);
+    }
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        init();
     }
 }

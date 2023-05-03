@@ -2,25 +2,10 @@ package ru.ezhov.mathematics.engine.example.infrastructure;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ru.ezhov.mathematics.engine.example.domain.model.FirstValue;
-import ru.ezhov.mathematics.engine.example.domain.model.FirstValueGroup;
-import ru.ezhov.mathematics.engine.example.domain.model.MathOperator;
-import ru.ezhov.mathematics.engine.example.domain.model.PlainExample;
-import ru.ezhov.mathematics.engine.example.domain.model.PlainExampleGroupRepository;
-import ru.ezhov.mathematics.engine.example.domain.model.Result;
-import ru.ezhov.mathematics.engine.example.domain.model.ResultGroup;
-import ru.ezhov.mathematics.engine.example.domain.model.ResultGroupRepositoryException;
-import ru.ezhov.mathematics.engine.example.domain.model.ResultValue;
-import ru.ezhov.mathematics.engine.example.domain.model.SecondValue;
-import ru.ezhov.mathematics.engine.example.domain.model.SecondValueGroup;
-import ru.ezhov.mathematics.engine.example.domain.model.Value;
+import ru.ezhov.mathematics.engine.example.domain.model.*;
 
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Scanner;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 class CsvPlainExampleGroupRepository implements PlainExampleGroupRepository {
@@ -34,8 +19,10 @@ class CsvPlainExampleGroupRepository implements PlainExampleGroupRepository {
     }
 
     private void init(InputStream inputStream) throws ResultGroupRepositoryException {
+        long startTime = System.currentTimeMillis();
         LOG.info("method=init action=\"начато наполнение хранилищиа\"");
         final Scanner scanner = new Scanner(inputStream).useDelimiter("\n");
+        long counter = 0;
         while (scanner.hasNextLine()) {
             final String nextLine = scanner.nextLine();
             final String[] split = nextLine.split(";");
@@ -64,8 +51,17 @@ class CsvPlainExampleGroupRepository implements PlainExampleGroupRepository {
             resultMap.put(secondValue.value(), secondPlainExamples);
             resultMap.put(resultValue.value(), resultPlainExamples);
 
+            counter++;
+
+            if (counter % 30000 == 0) {
+                LOG.info("method=init \"обработано записей\"={}", counter);
+            }
         }
-        LOG.info("method=init action=\"завершено наполнение хранилища\" \"уникальных значений\"={}", resultMap.size());
+        LOG.info(
+                "method=init action=\"завершено наполнение хранилища\" \"уникальных значений\"={} \"время наполнения\"={}ms",
+                resultMap.size(),
+                System.currentTimeMillis() - startTime
+        );
     }
 
     @Override
