@@ -34,7 +34,7 @@ class CsvPlainExampleGroupRepository implements PlainExampleGroupRepository {
     }
 
     private void init(InputStream inputStream) throws ResultGroupRepositoryException {
-        LOG.debug("method=init action=\"начато наполнение хранилищиа\"");
+        LOG.info("method=init action=\"начато наполнение хранилищиа\"");
         final Scanner scanner = new Scanner(inputStream).useDelimiter("\n");
         while (scanner.hasNextLine()) {
             final String nextLine = scanner.nextLine();
