@@ -67,7 +67,7 @@ public class MathematicsController {
                                         hiddenValueNumber == HiddenValueNumber.SECOND ? task.secondValue().value() : task.thirdValue().value()) + ""
                                 ).build()
                 );
-                if (i == 20) {
+                if (i > 100) {
                     break;
                 }
             }
